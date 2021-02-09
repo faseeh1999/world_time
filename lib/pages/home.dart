@@ -22,59 +22,41 @@ class _HomeState extends State<Home> {
 
 
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.settings,
-              color: Colors.white,
-            ),
-            onPressed: (){
-              print("Settings CLicked");
-            },
-          ),
 
-        ],
-        backgroundColor: Colors.cyan,
-        title: Text("Home Screen",style: TextStyle(
-          fontSize: 18.0,
-          fontWeight: FontWeight.w500,
-          letterSpacing: 1.0,
-
-        ),
-        ),
-        centerTitle: true,
-
-      ),
       backgroundColor: Colors.grey[200],
       body: SafeArea(
-        child: Column(
-          children: [
-            FlatButton.icon(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/location');
-                },
-                icon: Icon(Icons.edit_location),
-                label: Text("Edit Location")),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 20.0),
-              child: RaisedButton(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 120, 0, 0),
+          child: Column(
+            children: [
+              FlatButton.icon(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/location');
+                  },
+                  icon: Icon(Icons.edit_location),
+                  label: Text("Edit Location", style: TextStyle(fontSize: 15.0, letterSpacing: 0.5),)),
+              SizedBox(height: 10.0,),
 
-                padding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 10.0),
-                onPressed: () {},
-                color: Colors.red,
-                child: Text(
-                  "Second Button",
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    letterSpacing: 2.0,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    data['location'],
+                    style: TextStyle(
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
-                ),
+                ],
               ),
-            )
-          ],
+              SizedBox(height: 10.0),
+
+              Text(data['time'],
+              style: TextStyle(fontSize: 66.0),),
+
+
+            ],
+          ),
         ),
       ),
     );
