@@ -6,8 +6,21 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  Map data = {};
+
+
   @override
   Widget build(BuildContext context) {
+
+
+    data = ModalRoute.of(context).settings.arguments;
+    print(data);
+
+
+
+
+
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -24,8 +37,8 @@ class _HomeState extends State<Home> {
         ],
         backgroundColor: Colors.cyan,
         title: Text("Home Screen",style: TextStyle(
-          fontSize: 20.0,
-          fontWeight: FontWeight.bold,
+          fontSize: 18.0,
+          fontWeight: FontWeight.w500,
           letterSpacing: 1.0,
 
         ),
