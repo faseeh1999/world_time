@@ -8,6 +8,21 @@ class ChangeLocation extends StatefulWidget {
 
 class _ChangeLocationState extends State<ChangeLocation> {
 
+  void updateTime(index) async{
+    WorldTime wt = locations[index];
+    await wt.getTime();
+
+    Navigator.pop(context, {
+
+      'location': wt.location,
+      'flag': wt.flag,
+      'time': wt.time,
+      'isDay': wt.isDay,
+
+    });
+
+  }
+
   List<WorldTime> locations = [
     WorldTime(url: 'Asia/karachi', location: 'Karachi', flag: 'pak.png'),
     WorldTime(url: 'Asia/Kolkata', location: 'Kolkata', flag: 'ind.png'),
@@ -43,7 +58,10 @@ class _ChangeLocationState extends State<ChangeLocation> {
               padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
               child: Card(
                 child: ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    updateTime(index);
+
+                  },
                   title: Text(locations[index].location),
                   leading: CircleAvatar(
                     backgroundImage: AssetImage('assets/${locations[index].flag}'),
